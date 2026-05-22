@@ -1,0 +1,33 @@
+{
+  "entities": {
+    "Contact": {
+      "title": "Contact",
+      "description": "A contact request from the public website",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full Identity"
+        },
+        "email": {
+          "type": "string",
+          "description": "Comms Channel"
+        },
+        "message": {
+          "type": "string",
+          "description": "Transmission Payload"
+        },
+        "createdAt": {
+          "type": "timestamp"
+        }
+      },
+      "required": ["name", "email", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/contacts/{contactId}": {
+      "schema": { "$ref": "Contact" },
+      "description": "Contact form submissions. Anyone can create, only admin can read."
+    }
+  }
+}
